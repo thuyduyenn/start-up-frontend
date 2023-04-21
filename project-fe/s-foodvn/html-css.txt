@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food VN</title>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2? family= Libre+Baskerville:ital,wght@0,400;0,700;1,400 & family= Lora:ital,wght@0,400;0,500;0,600; 0,700;1,400;1,500;1,600;1,700 & family= Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700 & family = Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200; 1,400;1,500 & family= Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600 & family= Poppins:ital,wght@0,100 ; 0,200 ; 0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800 & family=Roboto:ital,wght@0,500;1,500 & family= Work+Sans:wght@100 & display=swap');
+
+    * {
+        font-family:'Poppins', sans-serif;
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        transition: 0.2s linear;
+        outline:none;
+        border:none;
+
+    }
+    html {
+        font-size: 82.5%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        scroll-padding-top: 4rem;
+    }
+    html::-webkit-scrollbar{
+        width:1rem;
+
+    }
+    html::-webkit-scrollbar-track{
+        background:transparent;
+    }
+    html::-webkit-scrollbar-thumb{
+        background:#CB8B55;
+        border-radius: 5rem;
+    }
+  
+  
+    :root {
+      --grey:#CB8B55;
+      --red:#F93A2A;
+      --green:#6AA01D;
+      --purple:#CE88BB;
+      --white:#FFFFFF
+
+    }
+    section{
+        padding:5rem 9%;
+    }
+    .heading {
+        font-size: 4rem;
+        font-weight: 700;
+        text-align: center;
+        color:#130f40;
+        margin-bottom: 2rem;
+    }
+    .heading span {
+      background:var(--red);
+      color:#130f40;
+      display:inline-block;
+      padding:0.5rem 3rem;
+      clip-path: polygon(100% 0, 93% 50%,100% 99%,0% 100%,7% 50%,0% 0%);
+    }
+    .btn {
+        display:inline-block;
+        margin-top: 1rem;
+        padding:0.8rem 2.8rem;
+        border-radius: 5rem;
+        border-top-left-radius: 0;
+        cursor:pointer;
+        background:none;
+        color:#CC450D;
+        font-size: 1.7rem;
+        overflow:hidden;
+        z-index: 0;
+        position:relative;
+        border:1px solid #CC450D;
+
+
+    }
+    .btn::before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:100%;
+        background:#CC450D;
+        z-index: -1;
+        transition:0.2s linear;
+        clip-path: circle(0.0% at 0 5%);
+
+
+    }
+    .btn:hover::before{
+        clip-path:circle(100%);
+    }
+    .btn:hover {
+        color:#fff;
+    }
+    .search-login {
+        position:absolute;
+        top:110%;
+        right:-1000%;
+        width:50rem;
+        height:3.5rem;
+        background:#eee;
+        border-radius: 0.5rem;
+        overflow:hidden;
+        display:flex;
+        align-items: center;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+        transition:all 0.2s ease-in-out;
+
+    }
+    .search-login.active {
+        right:2rem;
+    }
+    .search-login input {
+        height:100%;
+        width:100%;
+        background:#eee;
+        text-transform: none;
+        font-size: 1.6rem;
+        color:#111;
+        padding:0 1.5rem;
+        }
+    .search-login label {
+        font-size: 2.2rem;
+        padding-right: 1.5rem;
+        color:#111;
+        cursor:pointer;
+    }
+    .search-login label:hover {
+        color:var(--green);
+        transform:scale(1.1)
+    }
+    .cart {
+        width:350px;
+        
+        text-align: center;
+        padding-top:30px;
+        padding-bottom: 30px;
+        background:#eee;
+        border-radius: 5px;
+        padding:0 20px;
+        position:absolute;
+        top:100%;
+        right:-1000%;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.3);
+    }
+    .cart.active {
+        right:2rem;
+    }
+    .cart h1 {
+        margin-bottom: 30px;
+        margin-top:10px;
+        color:var(--red);
+    }
+    .cart table {
+        width:100%;
+    }
+    .cart table thead tr th:first-child{
+        text-align: left;
+    }
+    
+    .cart table tbody tr td {
+        border-bottom: 1px solid var(--grey);
+        padding:12px 0;
+    }
+    .cart table thead tr th:last-child{
+        text-align: right;
+    }
+    .cart table tbody tr td:last-child{
+        text-align: right;
+       }
+     .cart button {
+        margin-bottom:20px;
+        margin-top:10px;
+        
+     }  
+     /*.cart button:hover {
+        background:var(--red);
+        color:#fff;
+     } bỏ*/
+     .login-form {
+        position:absolute;
+        top:110%;
+        right:2rem;
+        width:27rem;
+        border-radius: 5px;
+        background:#fff;
+        box-shadow:  0 0.5rem 1.5rem rgba(0,0,0,0.3);
+        padding:2rem;
+        transition:all 0.32s ease;
+        display:none;
+
+     }
+     .login-form.active {
+        display:block;
+     }
+     .login-form h3 {
+        color:var(--red);
+        font-size: 2.5rem;
+        padding-bottom: 1rem;
+     }
+     .login-form .box {
+        width:100%;
+        border-bottom: 0.2rem solid #130f40;
+        border-width: 0.1rem;
+        padding:1rem 0;
+        font-size: 1.6rem;
+        color:#130f40;
+        text-transform: none;
+        margin:1rem 0;
+     }
+     .login-form .remember {
+         display:flex;
+         align-items: center;
+         gap:0.5rem;
+         padding:1rem 0;
+     }
+     .login-form .remember label {
+        font-size: 1.5rem;
+        cursor:pointer;
+        color:#666;
+     }
+     .login-form .btn {
+        width:100%;
+        text-align: center;
+        justify-content: center;
+        margin:1.5rem 0;
+        
+     }
+     .login-form .btn:hover {
+          background:var(--red);
+          color:#fff;
+     }
+     .login-form .links  {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:0.7rem;
+        
+     }
+     .login-form .links a {
+        font-size: 1.4rem;
+        color:#e67e22;
+     }
+     .login-form .links a:hover {
+        color:#130f40;
+        text-decoration: underline;
+     }
+
+
+
+
+    header {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        z-index: 1000;
+        padding:20px 100px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        transition:0.32s all ease;
+    }
+    header.sticky {
+        background:#fff;
+        padding:10px 100px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    header .logo a {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color:var(--red);
+        
+
+    }
+    header .logo a i {
+        font-size: 3rem;
+        font-weight: 600;
+        color:var(--green)
+    }
+    header .logo a span {
+        font-size: 3.5rem;
+       color:var(--green);
+
+    }
+    header .nav-menu {
+        font-size: 1.7rem;
+        font-weight: 500;
+         
+       
+ 
+      
+        padding-top:10px;
+        transition:all 1s ease;
+      
+    }
+    header .nav-menu  a {
+        color:var(--red);
+        margin-left: 2.5rem;
+    }
+    header .nav-menu  a:active {
+        color:var(--green);
+    }
+    header .icon-menu  {
+        display:flex;
+        align-items: center;
+        transition:all 1s ease;
+    }
+    header .icon-menu div {
+        display:none;
+    }
+    header .icon-menu div,
+    header .icon-menu i {
+          font-size: 2rem;
+           font-weight: 600;
+           margin-left: 1.5rem;
+           cursor:pointer;
+           color:var(--red);
+           
+        }
+    header .icon-menu div:active,
+    header .icon-menu i:active {
+          color:var(--green);  
+       }
+       /* home css starts*/
+       .home {
+          min-height: 100vh;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          background:url('https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          transition:all 0,32s ease-in-out;
+       }
+       .home .box-container {
+        text-align: center;
+       }
+       .home .box-container h2 {
+          font-size: 6rem;
+          font-weight: 700;
+          padding-bottom: 1rem;
+
+
+       }
+       .home .box-container p {
+        font-size: 1.5rem;
+        font-weight: 300;
+        line-height: 1;
+        color:#111;
+        padding-bottom: 10px;
+       }
+
+       /* home css ends*/
+
+       /*service css starts*/
+       .service {
+        background:#FFFFFF;
+        margin-top: 4rem;
+       
+       }
+            
+           .box {
+            display:flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding:3rem 0;
+           }
+           .box .image {
+            flex:1 1 40rem;
+           }
+           .box .image img {
+            width:100%;
+           }
+           .box .content {
+            flex:1 1 40rem;
+            text-align: center;
+            padding:2rem;
+           }
+           .box .content h3 {
+            font-size: 3rem;
+            color:#130f40;
+            padding-bottom: 0.5rem;
+           }
+           .box .content h3 span {
+            font-size: 4rem;
+            color:#FFCC25;
+           }
+           #shipper {
+            color:#F85325;
+           }
+           .box .content h5 {
+            font-size:1.3rem;
+            font-weight: 500;
+            color:#111;
+            font-style: italic;
+            padding-bottom: 0.3rem;
+           }
+           .box .content  p {
+            font-size: 15px;
+            font-weight: 400;
+            padding-top: 10px;
+           }
+           .box .content a i {
+            font-size: 2rem;
+            display:inline-block;
+          
+           }
+           .content2 {
+            flex-wrap: wrap-reverse;
+           }
+
+       /*service css ends*/
+
+
+       /* foods css starts*/
+       
+       .food-menu > h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2rem;
+        text-decoration: underline;
+        color:var(--red);
+        cursor:pointer;
+       }
+       .food-menu .food-box-container {
+        display:grid;
+        grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+        gap:1.5rem;
+        align-items: center;
+       }
+       .food-box {
+        position:relative;
+        overflow:hidden;
+        width:25rem;
+     
+        background:#fff;
+        box-shadow: 0.5rem 0.5rem 1.5rem rgba(0,0,0,0.1);
+        text-align: center;
+        padding:20px;
+        outline-offset:-0.8rem;
+        outline:0.1rem solid rgba(0,0,0,0.1);
+       }
+       .food-box:hover {
+        outline-offset:0rem;
+        outline:0.1rem solid var(--red);
+       }
+           .food-image img {
+             width:23rem;
+            height:28rem;
+            object-fit: cover;
+           }
+       .food-menu .food-box-container .food-box:hover .food-image img {
+            transform: scale(1.1);
+
+           }
+        .food-menu .food-box-container .food-box:hover .icons {
+            transform:translateX(-1rem);
+        }
+        
+       .food-menu .food-box-container .food-box .food-image{
+           width:100%;
+     
+           overflow: hidden;
+       }
+       .food-menu .food-box-container .food-box .icons {
+        position:absolute;
+        top:1rem;
+        right:1rem;
+        z-index: 10;
+        transform:translateX(10rem);
+        
+       }
+       .food-menu .food-box-container .food-box .icons a {
+        display:block;
+        width:3rem;
+        height:3rem;
+        line-height:3rem;
+        font-size: 2.2rem;
+        margin-top: 1rem;
+        background:#fff;
+        color:#130f40;
+        text-align: center;
+        
+       }
+       .food-menu .food-box-container .food-box .icons a:hover {
+        color:#fff;
+        background:var(--red);
+       }
+
+       .food-menu .food-box-container .food-box .food-content h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        padding-top: 5px;
+
+       }
+       .food-menu .food-box-container .food-box .food-content .amout {
+        font-size: 1.3rem;
+        font-weight: 500;
+        letter-spacing: 0.5;
+        color:#666;
+        padding-bottom: 5px;
+
+       }
+       .food-menu .food-box-container .food-box .food-content .amout span {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color:#CC450D;
+       }
+       .food-menu .food-box-container .food-box .btn-2 {
+        display:flex;
+        justify-content: space-between;
+        padding:0 10px;
+       }
+       .food-menu .food-box-container .food-box .btn-2 #btn-2 {
+        display:inline-block;
+       }
+       .food-menu .food-box-container .food-box .btn-2 #btn-2:hover {
+
+        color:#CC450D;
+        transform:scale(1.1);
+       }
+
+        /* foods css ends*/
+
+        /* about css starts*/
+        .about-box-container {
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+            gap:1.5rem;
+        }
+        .about .heading {
+            padding-bottom:20px;
+        }
+        .about-image img {
+            width:100px;
+            height:100px;
+            border-radius: 40%;
+        }
+        .about-box-container .about-box{
+            background:#eee;
+            padding:3rem;
+            text-align: center;
+            border-radius:33% 67% 70% 30% / 30% 35% 80% 70%;
+        }
+        .about-box-container .about-box:nth-child(even){
+            border-radius: 79% 21% 81% 19% / 58% 93% 20% 42%;
+        }
+        .about-box-container .about-box:hover {
+            border-radius: 0.5rem;
+        }
+        .about-box-container .about-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding-top: 1rem;
+
+        }
+        .about-box-container .about-box h3 span  {
+            font-size: 1rem;
+            color:#666;
+
+        }
+        .about-box-container .about-box p {
+            font-size: 1rem;
+            padding:10px 0;
+
+        }
+        .about-box-container .about-box .rating i  {
+            color:var(--grey);
+        }
+
+        /*about css ends*/
+
+        /*comments css starts*/
+        .comments-image img {
+            width:60px;
+            height:60px;
+            border-radius: 50%;
+        }
+        .comments-box {
+            display:flex;
+            gap:1rem;
+            align-items: center;
+            
+            justify-content: space-between;
+            border-bottom:1px solid #eee;
+            
+        }
+        .comments-box-sml{
+            display:flex;
+            align-items: center;
+            gap:2.5rem;
+            padding:2rem;
+        }
+        .comments-content h2 {
+              font-size: 1.3rem;
+              font-weight: 700;
+        }
+        .comments-content h2 span {
+            font-size: 1rem;
+            color:#666;
+        }
+        .comments-content  p {
+            font-size: 0.9rem;
+            padding-bottom: 10px;
+        }
+        .comments-icon {
+            display:flex;
+            align-items: center;
+        }
+        .comments-icon i,
+        .comments-icon div {
+            margin-left: 10px;
+            cursor:pointer;
+        }
+        .fa-ellipsis-v {
+             cursor:pointer;
+        }
+        .fa-ellipsis-v:hover {
+            color:#CC450D;
+
+        }
+        .bx-like.active {
+            color:#6AA01D;
+        }
+        .bx-dislike.active{
+            color:#CC450D;
+        }
+        .add-comments {
+            margin: 20px;
+        }
+        .add-box-comments {
+            display:flex;
+            align-items: center;
+            gap:20px;
+        }
+        .add-image {
+            flex: 1 1 4rem;
+        }
+        .add-text {
+            flex: 1 1 90rem;
+        }
+        .add-text input {
+            width:100%;
+            padding:10px;
+            border-bottom: 1px solid #130f40;
+            margin-bottom: 10px;
+
+        }
+        .add-icon {
+            display:none;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding:0 10px;
+            transition:all 0.32s ease;
+        }
+        .add-icon .heart i {
+           
+            width:40px;
+            height:40px;
+            line-height: 50px;
+            border-radius: 50%;
+            color:#111;
+          
+            font-size: 1.5rem;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            cursor:pointer;
+        }
+        .add-icon .heart i:hover {
+            background:#F2F2F2; 
+        }
+        .send {
+            display:flex;
+            
+        }
+        .send a {
+            margin-left: 15px;
+        }
+        .send .btn-des {
+            display:inline-block;
+            padding:10px 20px;
+            border-radius: 15px;
+            
+        }
+        .send .btn-des:hover {
+            background:#eee;
+        }
+        .send .btn-comments {
+            display:inline-block;
+            padding:10px 30px;
+            border-radius: 15px;
+            background:#ddd;
+        } 
+        
+        .add-icon.active {
+            display:flex;
+        }
+       
+        
+        /*comments css ends*/
+        /* contact css start*/
+        .contact {
+           
+            background:url('https://images.unsplash.com/photo-1498230870289-7561110a6e69?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+            min-height: 100vh;
+          
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+         
+            
+        }
+        .contact-form {
+         
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          margin-top:5rem;
+      
+          
+          
+          
+
+       
+        }
+        .contact-form form {
+            width:30rem;
+            
+            display:flex;
+            flex-direction: column;
+            padding:10px 20px;
+            text-align: center;
+            border:1px solid #eee;
+            box-shadow: 0 0.5rem 1.5rem var(--red);
+            background:var(--purple);
+            border:none;
+            border-radius: 10px;
+            position:relative;
+
+
+        }
+        .contact-form form input,
+        .contact-form form textarea {
+            margin:10px 0;
+          
+            
+        }
+        .contact-form form input {
+            padding:10px;
+            height:40px;
+        }
+        .contact-form form textarea {
+           height:15rem;
+           resize:none;
+           padding:10px 10px;
+        }
+   
+        .contact-form form .contact-box  {
+               
+            width:100%
+        }
+        .contact-form form .contact-btn {
+            width:50%;
+            
+
+        }
+        .contact-form form .contact-btn {
+            cursor:pointer;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color:var(--red);
+
+        }
+        .contact-form form .contact-btn:hover {
+            color:#F2F2F2;
+            background:var(--red);
+        }
+        .footer {
+            position:relative;
+            background:url('https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+
+            background-size: cover;
+            background-position: center;
+            padding-top: 10rem;
+            padding-bottom: 2rem;
+            
+        }
+        .footer img  {
+            position:absolute;
+            top:0;
+            left:0;
+            height:10rem;
+            width:100%;
+        }
+        .footer .share {
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:1.5rem;
+
+
+        }
+        .footer .share a {
+            color:var(--red);
+            padding:2rem 4rem;
+            background:transparent;
+            font-size: 1.5rem;
+            border:1px solid var(--red);
+            border-radius: 30% 70% 70% 30%/33% 43% 57% 67%;
+        }
+        .footer .share a:hover {
+            color:#fff;
+            background:var(--red);
+        }
+        .footer .share a:hover i {
+            transform:scale(1.5);
+        }
+  
+        
+        /* contact css ends*/
+
+
+
+
+       /*media */
+       @media (max-width:1380px){
+            html {
+                font-size: 75%;
+            }
+            header {
+                padding:15px 25px;
+            }
+            header .nav-menu {
+                margin-top:-10px;
+            }
+            header .logo {
+                margin-top:-10px;
+            }
+       }
+       @media (max-width:1115px){
+            header.sticky {
+                padding:10px 5px;
+            }
+        }
+     
+       @media (max-width:921px){
+        html {
+            font-size: 65%;
+        }
+        #menu {
+            display:inline-block;
+        }
+        .nav-menu {
+            position:absolute;
+            top:100%;
+            left:0;
+            right:0;
+           
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            border-top: 0.1rem solid rgba(59, 61, 64, 0.1);
+            background:#eee;
+            transition:all 0.01s ease;
+
+
+        }
+        .nav-menu.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        .nav-menu  a {
+           display:block;
+           margin:1rem;
+           padding:2rem;
+           font-size: 2rem;
+           border:0.2rem solid #fff;
+           border-left: 0.5rem solid var(--red);
+           border-bottom: 0.3rem solid var(--red);
+        }
+        .home {
+            background-position: left;
+        }
+        
+       
+    }
+
+    @media (max-width:793px){
+        .food-box{
+           width:30rem;
+        }
+    }
+    @media (max-width:643px){
+        .search-login{
+            width:40rem;
+        }
+    }
+    @media (max-width:455px){
+        .search-login{
+            width:30rem;
+        }
+    }
+    @media (max-width:363px){
+        .search-login{
+            width:20rem;
+        }
+    }
+ 
+   
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><i class='bx bx-restaurant'></i> Food<span>.</span></a>
+        </div>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#service">Services</a>
+            <a href="#food">Foods</a>
+            <a href="#about">About us</a>
+            <a href="#comments">Comments</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="icon-menu">
+            <div class="bx bx-menu" id="menu"></div>
+            <i class='bx bx-cart' id="cart" ></i>
+            <i class='bx bx-search-alt-2' id="search"></i>
+            <i class='bx bx-user' id="user"></i>
+        </div>
+        <form action="" method="post" class="search-login">
+              <input type="search" name=""  id="search-form" placeholder="Search here now...">
+              <label for="search-form" class="bx bx-search-alt-2"></label>
+        </form>
+        <div class="cart">
+            <h1>Cart</h1>
+            <form action="">
+                <table>
+                    <thead>
+                        <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>SL</th>
+                        <th>Chọn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr>
+                            <td style="display:flex;align-items: center;">
+                                <img style="width:90px;height:70px;" src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg" >
+                                Iphone6
+                            </td>
+                            <td><p><span>320.000</span><sup>đ</sup></p></td>
+                            <td><input style="width:30px; outline:none;" type='number' value="1" min="1"></td>
+                            <td style="cursor:pointer;">xoá</td>
+
+                            
+                        </tr>
+                        <tr>
+                            <td style="display:flex;align-items: center;">
+                                <img style="width:90px;height:70px;" src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg" >
+                                Iphone6
+                            </td>
+                            <td><p><span>320.000</span><sup>đ</sup></p></td>
+                            <td><input style="width:30px;outline:none;" type='number' value="1" min="1"></td>
+                            <td style="cursor:pointer">xoá</td>
+                        </tr>
+                        <tr>
+                            <td style="display:flex;align-items: center;">
+                                <img style="width:90px;height:70px;" src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg" >
+                                Iphone6
+                            </td>
+                            <td><p><span>320.000</span><sup>đ</sup></p></td>
+                            <td><input style="width:30px;outline:none;" type='number' value="1" min="1"></td>
+                            <td style="cursor:pointer">xoá</td>
+                        </tr>
+                    -->
+                    </tbody>
+                </table>
+                <div style="text-align: right;" class="price-total">
+                      <p style="font-weight: bold;">Tổng tiền: <span></span><sup>đ</sup></p>
+                </div>
+                <button class="btn">
+                    Chốt đơn
+                </button>
+            </form>
+        </div>
+        <form action="" method="post" class="login-form">
+            <h3>sign in</h3>
+            <input type="email" name="email" placeholder="enter your email" class="box">
+            <input type="password" name="password" placeholder="enter your password" class="box">
+            <div class="remember">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">remember me</label>
+            </div>
+            <input type="submit" name="submit" value="sign-in" class="btn">
+            <div class="links">
+                <a href="#">forger password</a>
+                <a href="#">sign up</a>
+            </div>
+        </form>
+    </header>
+    <section class="home" id ="home">
+        <div class="box-container">
+            <h2>Always Chose Good</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat cum, officiis illum quo ut blanditiis.</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+    </section>
+
+    <!--services section starts-->
+    <div class="service" id="service">
+        <h1 class="heading">our <span>services</span></h1>
+        
+        <div class="box">
+
+            <div class="image">
+                <img src="http://nghilucsong.vn/attachments/nv-ban-hang-1-jpg.1110/">
+            </div>
+        <div class="content">
+            <h3><span>Nhân viên</span> thân thiện</h3>
+            <h5>Thái độ nhiệt tình, nhẹ nhàng, hoà đồng</h5>
+            <p>Khách hàng là thượng đế</p>
+            <a href="#" class="btn">Read more </a>
+        </div>
+
+        
+        
+  
+     </div>
+        
+    </div>
+    <div class="service" id="service">
+        <div class="box content2">
+    
+                
+                <div class="content">
+                   <h3><span id="shipper">Shipper</span> thân thiện</h3>
+                  <h5>Giao hàng nhanh chóng,tận nơi, mọi nơi</h5>
+                   <p>Khách hàng là thượng đế</p>
+                   <a href="#" class="btn">Read more </a>
+                </div>
+                <div class="image">
+                    <img src="https://static.luatvietnam.vn/uploaded/Images/Original/2018/05/08/shipper-lua-dao_0805113301.jpg">
+                </div>
+    
+        </div>
+    </div>
+        
+    </div>
+
+
+    <!--services section ends-->
+
+    <!--food section starts-->
+    <section class="food" id="food">
+        <h1 class="heading">Our<span> Foods</span></h1>
+        <div class="food-menu" id=food-menu">
+            <h3>Đồ ăn sáng</h3>
+            <div class="food-box-container">
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>
+                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>
+                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://cdn.cet.edu.vn/wp-content/uploads/2018/03/bun-thit-nuong-kieu-mien-nam.jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>
+                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://reviewvilla.vn/wp-content/uploads/2022/06/bun-dau-mam-tom-Ha-Noi-15-1024x1024.jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+                <div class="food-box">
+                    <div class="icons">
+                        <a href="#" class="bx bxs-cart-add"></a>
+                        <a href="#" class="fa fa-eye-slash"></a>
+                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                    </div>
+                    <div class="food-image">
+                        <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                    </div>
+                    <div class="food-content">
+                        <h3>Phở</h3>
+                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                    </div>
+                    <div class="btn-2">
+                        <div><a href="#" id="btn-2">Read more..</a></div>
+                        <div><a href="#food" id="btn-2">Order now</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="food-menu" id=food-menu">
+                <h3>Đồ ăn trưa</h3>
+                <div class="food-box-container">
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://cdn.cet.edu.vn/wp-content/uploads/2018/03/bun-thit-nuong-kieu-mien-nam.jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://reviewvilla.vn/wp-content/uploads/2022/06/bun-dau-mam-tom-Ha-Noi-15-1024x1024.jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                    <div class="food-box">
+                        <div class="icons">
+                            <a href="#" class="bx bxs-cart-add"></a>
+                            <a href="#" class="fa fa-eye-slash"></a>
+                            <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                        </div>
+                        <div class="food-image">
+                            <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                        </div>
+                        <div class="food-content">
+                            <h3>Phở</h3>
+                            <div class="amout"><span>320.000</span><sup>đ</sup></div>                        </div>
+                        <div class="btn-2">
+                            <div><a href="#" id="btn-2">Read more..</a></div>
+                            <div><a href="#food" id="btn-2">Order now</a></div>
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="food-menu" id=food-menu">
+                    <h3>Đồ ăn chiều</h3>
+                    <div class="food-box-container">
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://cdn.cet.edu.vn/wp-content/uploads/2018/03/bun-thit-nuong-kieu-mien-nam.jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://reviewvilla.vn/wp-content/uploads/2022/06/bun-dau-mam-tom-Ha-Noi-15-1024x1024.jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                        <div class="food-box">
+                            <div class="icons">
+                                <a href="#" class="bx bxs-cart-add"></a>
+                                <a href="#" class="fa fa-eye-slash"></a>
+                                <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                            </div>
+                            <div class="food-image">
+                                <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                            </div>
+                            <div class="food-content">
+                                <h3>Phở</h3>
+                                <div class="amout"><span>320.000</span><sup>đ</sup></div>                            </div>
+                            <div class="btn-2">
+                                <div><a href="#" id="btn-2">Read more..</a></div>
+                                <div><a href="#food" id="btn-2">Order now</a></div>
+                            </div>
+        
+                        </div>
+                    </div>
+                    <div class="food-menu" id=food-menu">
+                        <h3>Đồ ăn vặt</h3>
+                        <div class="food-box-container">
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://cdn.cet.edu.vn/wp-content/uploads/2018/03/bun-thit-nuong-kieu-mien-nam.jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://reviewvilla.vn/wp-content/uploads/2022/06/bun-dau-mam-tom-Ha-Noi-15-1024x1024.jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                            <div class="food-box">
+                                <div class="icons">
+                                    <a href="#" class="bx bxs-cart-add"></a>
+                                    <a href="#" class="fa fa-eye-slash"></a>
+                                    <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                </div>
+                                <div class="food-image">
+                                    <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                                </div>
+                                <div class="food-content">
+                                    <h3>Phở</h3>
+                                    <div class="amout"><span>320.000</span><sup>đ</sup></div>                                </div>
+                                <div class="btn-2">
+                                    <div><a href="#" id="btn-2">Read more..</a></div>
+                                    <div><a href="#food" id="btn-2">Order now</a></div>
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="food-menu" id=food-menu">
+                            <h3>Nước giải khát</h3>
+                            <div class="food-box-container">
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://cdn.cet.edu.vn/wp-content/uploads/2018/03/bun-thit-nuong-kieu-mien-nam.jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://reviewvilla.vn/wp-content/uploads/2022/06/bun-dau-mam-tom-Ha-Noi-15-1024x1024.jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://noiphodien123.vn/wp-content/uploads/2020/06/hu-tieu-go-don-gian-ma-ngon.jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                                <div class="food-box">
+                                    <div class="icons">
+                                        <a href="#" class="bx bxs-cart-add"></a>
+                                        <a href="#" class="fa fa-eye-slash"></a>
+                                        <a href="#" class="bx bxs-download bx-flip-horizontal"></a>
+                                    </div>
+                                    <div class="food-image">
+                                        <img src="https://doanhnghiepvadautu.info.vn/Data/upload/images/PhongTC/1%20(1).jpg">
+                                    </div>
+                                    <div class="food-content">
+                                        <h3>Phở</h3>
+                                        <div class="amout"><span>320.000</span><sup>đ</sup></div>                                    </div>
+                                    <div class="btn-2">
+                                        <div><a href="#" id="btn-2">Read more..</a></div>
+                                        <div><a href="#food" id="btn-2">Order now</a></div>
+                                    </div>
+                
+                                </div>
+                            </div>
+        </div>
+    </section>
+
+    <!--food section ends-->
+
+
+    <!--about section starts-->
+    <section class="about" id="about">
+        <h1 class="heading"><span>About</span> Us</h1>
+        <div class="about-box-container">
+            <div class="about-box">
+                <div class="about-image">
+                    <img src="https://media.istockphoto.com/photos/smiling-male-chef-with-cooked-food-in-kitchen-picture-id690837852?k=6&m=690837852&s=612x612&w=0&h=zs_dw3CYG9OpK45xeRRkSPTm0ja-x3jM6BbF13aZV7E=">
+                </div>
+                <h3>Lê Thị Thuý Duyên / <span>Bếp trưởng</span></h3>
+                <p>Với kinh nghiệm 25 năm tay nghề </p>
+                <div class="rating">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+                <a href="#" class="btn">Read more</a>
+                
+
+            </div>
+            <div class="about-box">
+                <div class="about-image">
+                    <img src="https://media.istockphoto.com/photos/male-chef-preparing-salad-in-kitchen-picture-id886640190?k=6&m=886640190&s=612x612&w=0&h=nSA6zEv51C4tqJ9w9gRNf9NiTzVwojdLtSkouBSsciw=">
+                </div>
+                <h3>Lê Thị Thuý Duyên / <span>Bếp trưởng</span></h3>
+                <p>Với kinh nghiệm 25 năm tay nghề </p>
+                <div class="rating">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+                <a href="#" class="btn">Read more</a>
+                
+
+            </div>
+            <div class="about-box">
+                <div class="about-image">
+                    <img src="http://daynauan.vn/uploads/2015/09/nghe-dau-bep-nhieu-co-hoi-viec-lam.jpg">
+                </div>
+                <h3>Lê Thị Thuý Duyên / <span>Bếp trưởng</span></h3>
+                <p>Với kinh nghiệm 25 năm tay nghề </p>
+                <div class="rating">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+                <a href="#" class="btn">Read more</a>
+                
+
+            </div>
+        </div>
+    </section>
+    <!--about section ends-->
+    <!--comments section starts-->
+    <section class="comments" id="comments">
+        <h1 class="heading"><span>They said </span> about us</h1>
+        </h1>
+        <div class="comments-box-container">
+            <div class="comments-box">
+                <div class="comments-box-sml">
+                  <div class="comments-image">     
+                      <img src="/image/anhnen.jpg">
+                  </div>
+          
+                  <div class="comments-content">
+                      <h2>Đại Phong <span>1 tháng trước</span></h2>
+                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam similique voluptatum omnis laborum magni nemo impedit autem neque qui voluptatem,<br> quam et quo consequuntur veniam expedita animi in nobis debitis!</p>
+                       <div class="comments-icon">
+                           <i class='bx bx-like'></i>
+                            <i class='bx bx-dislike' ></i>
+                            <div class="rep">Phản hồi</div>
+                       </div>
+                 </div>
+            </div>
+            <div class="comments-menu">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
+            </div>
+        <div class="comments-box">
+            <div class="comments-box-sml">
+              <div class="comments-image">     
+                  <img src="/image/anhnen.jpg">
+              </div>
+      
+              <div class="comments-content">
+                  <h2>Đại Phong <span>1 tháng trước</span></h2>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam similique voluptatum omnis laborum magni nemo impedit autem neque qui voluptatem,<br> quam et quo consequuntur veniam expedita animi in nobis debitis!</p>
+                   <div class="comments-icon">
+                       <i class='bx bx-like'></i>
+                        <i class='bx bx-dislike' ></i>
+                        <div class="rep">Phản hồi</div>
+                   </div>
+             </div>
+        </div>
+        <div class="comments-menu">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
+        </div>
+    <div class="comments-box">
+        <div class="comments-box-sml">
+          <div class="comments-image">     
+              <img src="/image/anhnen.jpg">
+          </div>
+  
+          <div class="comments-content">
+              <h2>Đại Phong <span>1 tháng trước</span></h2>
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam similique voluptatum omnis laborum magni nemo impedit autem neque qui voluptatem,<br> quam et quo consequuntur veniam expedita animi in nobis debitis!</p>
+               <div class="comments-icon">
+                   <i class='bx bx-like'></i>
+                    <i class='bx bx-dislike' ></i>
+                    <div class="rep">Phản hồi</div>
+               </div>
+         </div>
+    </div>
+    <div class="comments-menu">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+    </div>
+    </div>
+
+    </div>
+    <div class='add-comments'>
+        <div class="add-box-comments">
+            <div class="add-image comments-image">
+                <img src="/image/anhnen.jpg">
+            </div>
+            <div class="add-text">
+                <input type="text" name="" class="input" placeholder="Viết bình luận ở đây.....">
+                <div class="add-icon">
+                    <div class="heart">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </div>
+                    <div class="send">
+                        <a href="#" class="btn-des">Huỷ</a>
+                        <a href="#" class="btn-comments">Bình luận</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!--comments section ends-->
+
+    <!--contact section starts-->
+    <section class="contact" id="contact">
+        <h3 class="heading"><span>Contact</span> us</h3>
+        <div class="contact-form">
+        <form action="" method="post">
+            
+            <input type="text" name="" placeholder="your name.." class="contact-box">
+            <input type="email" name="" placeholder="your email" class="contact-box">
+            <textarea name="" placeholder="comments here now.." cols="30" row="30"></textarea>
+            <div ><input type="submit" name="" value="send" class="contact-btn"></div>
+        </form>
+    </div>
+    
+    </section>
+    <!--contact section ends-->
+    <!--footer section starts-->
+    <div class="footer" id="footer">
+        <img src="image/top_wave.png">
+        <div class="share">
+            <a href="#" class="btn1"><i class='bx bxl-facebook-square'></i></a>
+            <a href="#" class="btn1"><i class='bx bxl-twitter' ></i></a>
+            <a href="#" class="btn1"><i class='bx bxl-instagram-alt' ></i></a>
+            <a href="#" class="btn1"><i class='bx bxl-linkedin' ></i></a>
+            <a href="#" class="btn1"><i class='bx bxs-printer' ></i></a>
+        </div>
+
+    </div>
+    
+    <!--footer section ends-->
+    <script src="webjava.js"></script>
+</body>
+</html>

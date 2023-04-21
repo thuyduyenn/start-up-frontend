@@ -1,0 +1,66 @@
+const foodItem = [
+    {
+       image: "/image/menu1.jpg",
+       name: "Chicken",
+       price: 10
+    },
+    {
+        image: "/image/menu2.jpg",
+        name: "pig",
+        price: 11
+     },
+     {
+        image: "/image/menu3.jpg",
+        name: "man",
+        price: 12
+     },
+     {
+        image: "/image/menu4.jpg",
+        name: "woman",
+        price: 13
+     },
+     {
+        image: "/image/menu5.jpg",
+        name: "hot dog",
+        price: 14
+     },
+     {
+        image: "/image/menu6.jpg",
+        name: "salad",
+        price: 15
+     },
+     {
+        image: "/image/menu.jpg",
+        name: "milk",
+        price: 16
+     },
+     
+
+]
+var box = document.querySelector(".box");
+box.innerHTML ="";
+foodItem.forEach(item=> {
+
+    var boxItem = document.createElement("div")
+    boxItem.classList.add("box-1")
+    boxItem.innerHTML = `
+                <div class="image"><img src="${item.image}"></div>
+                <div class="text">
+                    <div class="name">${item.name}</div>
+                    <div class="price">${item.price}$</div>
+                </div>`
+       box.appendChild(boxItem);         
+})
+let searchInput =  document.querySelector(".search-container input");
+
+searchInput.addEventListener("input", e=>{
+      let searchText = e.target.value.trim().toLowerCase()
+      let listProductDOM = document.querySelectorAll(".box-1");
+      listProductDOM.forEach(item => {
+         if (item.innerText.toLowerCase().includes(searchText)){
+                   item.classList.remove("hide")
+         } else {
+            item.classList.add("hide")
+         }
+      })
+})

@@ -1,0 +1,172 @@
+const foodItem =[
+    { 
+        image: "/image/menu1.jpg",
+        name:"Sản phẩm 1",
+        price :50000
+    },
+    { 
+        image: "/image/menu2.jpg",
+        name:"Sản phẩm 2",
+        price :100000
+    },
+
+   { 
+       image: "/image/menu3.jpg",
+       name:"Sản phẩm 3",
+       price :150000
+   },
+
+    { 
+      image: "/image/menu4.jpg",
+       name:"Sản phẩm 4",
+       price :250000
+   },
+   { 
+    image: "/image/menu5.jpg",
+    name:"Sản phẩm 5",
+    price :50000
+},
+{ 
+    image: "/image/menu6.jpg",
+    name:"Sản phẩm 6",
+    price :100000
+},
+
+{ 
+   image: "/image/product_01.jpg",
+   name:"Sản phẩm 7",
+   price :150000
+},
+
+{ 
+  image: "/image/product_02.jpg",
+   name:"Sản phẩm 8",
+   price :250000
+},
+
+];
+let container = document.querySelector(".list-container")
+let cart = document.querySelector(".cart-container")
+
+// console.log(container)
+
+//add border start
+function addBorder(a,b) {
+    b.forEach(item => {
+        item.classList.remove("hide");
+    })
+    a.classList.add("hide")
+}
+//add border end
+
+//filter start
+function filter(c) {
+    let nameProduct =  c.querySelector(".cart-infor h3").innerText
+    let cartBox = cart.querySelectorAll(".cart-box")
+      cartBox.forEach(item => {
+        if (nameProduct === item.querySelector(".cart-infor h3").innerText) throw alert("Sản phẩm đã có trong giỏ hàng");
+             })
+  }
+
+/// Total 
+ function Total(){
+    let totalA 
+    let totalC 
+    let totalD = 0;
+    let cartBox = cart.querySelectorAll(".cart-box");
+    cartBox.forEach(item => {
+        totalA = item.querySelector(".cart-infor p span").innerHTML;
+        let inputValue = item.querySelector(".cart-infor input").value 
+        
+        totalC = Number(totalA) * inputValue;
+        totalD += totalC
+      
+          
+
+        
+
+        // console.log(totalD)
+        const VND = new Intl.NumberFormat('vi-VN', {
+            style : 'currency',
+            currency : "VND",
+        });
+        // console.log("price:" + VND.format(totalD))
+        let totalE = VND.format(totalD)
+        console.log(totalE)
+        inputChange(cartBox) 
+    })
+     
+ }
+ //input Change
+ function inputChange(f){
+      f.forEach(item => {
+          inputValue = item.querySelector(".cart-infor input")
+          inputValue.addEventListener("change", function (){
+             Total();
+          })
+      })
+
+ }
+
+
+
+
+foodItem.forEach(item => {
+    container.innerHTML += `
+    <div class="list-box">
+                <div class="list-image">
+                    <img src="${item.image}">
+                </div>
+                <div class="cart-infor">
+                    <h3>${item.name}</h3>
+                    <p><span>${item.price}</span>đ</p>
+                    <button>Order now</button>
+                </div>
+            </div>
+    `;
+     let button = container.querySelectorAll("button");
+     let listBox = container.querySelectorAll(".list-box")
+    //  console.log(listBox)
+
+      button.forEach(btn => {
+
+        btn.addEventListener("click",(e)=>{
+              
+              let pos = e.target.parentElement.parentElement;
+             
+              filter(pos)
+              addBorder(pos,listBox);
+                    
+                   
+             
+      
+               let image = pos.querySelector(".list-image img").src;
+               
+               let name = pos.querySelector(".cart-infor h3").innerText;
+               let price = pos.querySelector(".cart-infor p span").innerText;
+               cart.innerHTML += `
+               <div class="cart-box">
+                <div class="image">
+                    <img src="${image}">
+                </div>
+                <div class="cart-infor">
+                    <h3>${name}</h3>
+                    <p><span>${price}</span>đ</p>
+                    <input type="number" min="1" value="1">
+                    <button>Order now</button>
+                </div>
+            </div>
+               `;
+
+            Total();
+
+      
+              
+        })
+      })
+
+})
+
+
+   
+

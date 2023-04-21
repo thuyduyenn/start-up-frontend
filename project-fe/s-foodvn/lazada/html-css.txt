@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>lazada</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+    }
+    body {
+        background:#F5F5F5;
+    }
+    .banner {
+        width:100%;
+      
+       
+
+    }
+
+    .banner img {
+        width:100%;
+        height:100%;
+    }
+    .menu {
+        background:#F7F7F7;
+    }
+    .menu .nav-menu {
+        display:flex;
+        justify-content: space-between;
+        padding:2px 9%;
+        
+    }
+    .menu .nav-menu li a{
+      font-size: 15px;
+      text-transform: uppercase;
+      color:#9E9E9E;
+
+    }
+    .menu .nav-menu li:nth-child(1) a{
+          color:#0F1568;
+    }
+    .menu .nav-menu li:nth-child(2) a{
+        color:#0F1568;
+    }
+    .menu .nav-menu li a:hover {
+        color:#F57223;
+    }
+    .logo {
+        padding:11px 9% 0px;
+        display:flex;
+        justify-content: space-between;
+    }
+    .logo .lazada-logo img {
+        width:127px;
+        height:40px;
+        cursor:pointer;
+    }
+    .logo .sale-off img {
+        width:188px;
+        height:45px;
+        cursor:pointer;
+    }
+    .logo-content {
+        display:flex;
+        justify-content: space-between;
+     
+        width:45rem;
+    }
+    .logo-content .search-form{
+        width:90%;
+        display:flex;
+        justify-content: space-between;
+    }
+    .logo-content .search-form input {
+        width:95%;
+        height:100%;
+        padding:0 20px;
+        border:none;
+        outline:none;
+        background:#EFF0F5;
+    }
+    .logo-content .search-form label {
+        color:#fff;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        background:#F57223;
+        width:3rem;
+        height:3rem;
+        font-size: 1.5rem;
+        border:none;
+        outline:none;
+        cursor:pointer;
+    }
+    .logo-content  .cart  {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        cursor:pointer;
+    }
+    /*  slider   */
+    .container {
+        width:85%;
+        margin:1rem auto;
+        height:75vh;
+        
+    }
+    .main {
+        height:80%;
+        margin-bottom: 20px;
+        position:relative;
+    }
+    .img-feature {
+        transition:1s;
+        
+    }
+    .list-image {
+        height:15%;
+      
+        display:flex;
+        justify-content: space-between;
+    }
+    .list-image div {
+        flex:1;
+        padding:5px;
+    }
+    img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        object-position:center;
+    }
+    .control {
+        position:absolute;
+        top:50%;
+        font-size: 50px;
+        transform:translateY(-50%);
+        color:#EFF0F5;
+        cursor:pointer;
+       
+
+    }
+    .pre {
+        left:10px;
+        cursor:pointer;
+    }
+    .next {
+        right:10px;
+        cursor:pointer;
+    }
+    .active {
+        background:rgb(151, 57, 57);
+    }
+    @keyframes slideLeft {
+        0%{
+            transform:translateX(100%)
+        }
+        100% {
+            transform:translateX(0%);
+        }
+    }
+    @keyframes slideRight {
+        0%{
+            transform:translateX(-100%)
+        }
+        100% {
+            transform:translateX(0%);
+        }
+    }
+    /*    laz    */
+    .laz-mall-container {
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:1rem;
+    }
+    .icon-1 {
+        display:flex;
+        width:23%;
+        align-items: center;
+         gap:20px;
+  
+         padding:5px;
+         border-radius: 20px;
+         background:#fff;
+         cursor:pointer;
+
+         
+    }
+    .icon-1:hover {
+        box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.4);
+    }
+    .icon-1 .icon-1-image {
+          width:32px;
+          height:32px;
+          border-radius: 50%;
+          border:1px solid #eee;
+    }
+    .icon-1 .icon-1-image img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+    /* shop*/
+     .shop-1 {
+        padding-bottom: 20px;
+     }
+    .shop-1-content {
+        background:#fff;
+    }
+    .shop-1-container h4 {
+       font-size: 2rem;
+       font-weight: 500;
+       color:#424242;
+       margin-bottom: 1rem;
+    }
+    .shop-1-content-top {
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px;
+        border-bottom: 1px solid #eee;
+    }
+    .shop-1-content-left {
+        display:flex;
+        justify-content:space-between;
+        width:50%;
+    }
+    .shop-1-content-top-watch-watch {
+        display:flex;
+        align-items: center;
+    }
+    .shop-1-content-top-watch-watch  div {
+        padding:15px;
+        margin:0 7px;
+        background:#D32329;
+        color:#fff;
+        border-radius: 5px;
+
+    }
+    .shop-1-content-top-watch {
+        display:flex;
+    
+        width:30rem;
+        gap:0.5rem;
+        align-items: center;
+      
+    }
+    .shop-1-content-top-text {
+        color:#F57223;
+        font-size: 1.3rem;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .shop-1-content-top-watch-text {
+        font-size: 1.3rem;
+    }
+    
+    .shop-1-content-top-text-right {
+        padding:10px;
+        font-size: 1.2rem;
+        color:#F57223;
+        border:2px solid #F57223;
+        text-transform: uppercase;
+        cursor:pointer;
+    }
+    .shop-1-content-bottom {
+        margin-top: 1rem;
+        display:flex;
+        object-fit: fill;
+        justify-content: space-between;
+    }
+    .box {
+        width:210px;
+        height:310px;
+        text-align: left;
+       
+    }
+    .box:hover {
+        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.3);
+    }
+    .box .image {
+        width:210px;
+        height:210px;
+    }
+    .box .image img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .product-name {
+        font-size: 1rem;
+        margin:10px 0;
+        margin-bottom: 5px;
+    }
+    .price {
+        font-size: 1.3rem;
+        color:#F57223;
+        font-weight: 600;
+    }
+    .box-container  {
+        display:flex;
+        gap:20px;
+        padding-bottom: 20px;
+
+    }
+    .box-container .box  {
+        width:210px;
+        height:300px;
+        background:#fff;
+        text-align: center;
+        cursor:pointer;
+    }
+    .box-container .box .image {
+        width:210px;
+        height:210px;
+   
+        position:relative;
+
+    }
+    .box-container .box .image img {
+        width:100%;
+        height:100%;
+        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.2);
+
+    }
+    .box-container .box .image .image-small {
+            width:52px;
+            height:52px;
+            position:absolute;
+            top:87%;
+            left:50%;
+            transform:translate(-50%);
+           
+    }
+    .box-container .box .image .image-small img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+       
+    }
+    .shop-2-text {
+        padding-top: 30px;
+    }
+    .shop-2-text p:nth-child(1) {
+        font-size: 20px;
+        color:#111;
+        padding-bottom: 5px;
+    }
+    .shop-2-text p:nth-child(2){
+        color:#9E9E9E;
+        }
+        .shop-2 h4 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color:#424242;
+            font-weight: 500;
+            margin-top: 2rem;
+        }
+        .shop-3 h4 {
+            font-size: 2rem;
+            font-weight: 500;
+            color:#424242;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+    .shop-3-container {
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .shop-3-container .box-3 {
+       width:148px;
+       height:148px;
+       background:#fff;
+       text-align: center;
+       padding:10px 0;
+       border:1px solid #E2E2E2;
+       
+       
+    }
+    .shop-3-container .box-3:hover {
+       transform:scale(1.01);
+        box-shadow: 0.1rem 0.1rem 0.5rem #E2E2E2;
+    }
+    .shop-3-container .box-3 .image {
+        width:80px;
+        height:80px;
+        margin: auto;
+       
+
+    }
+    .image-container {
+        width:100%;
+        height:90px;
+        }
+    
+    .shop-3-container .box-3 .image img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+    .shop-more h4 {
+         padding-top:15px;
+         padding-bottom: 15px;
+         font-size: 2rem;
+         font-weight: 500;
+         color:#424242;
+    }
+    .shop-more {
+        padding-bottom: 10px;
+        
+    }
+    .shop-more-box {
+        width:189px;
+      background:#fff;
+      
+        
+
+
+    }
+    .shop-more-box:hover {
+       
+        box-shadow: 0.1rem 0.1rem 0.3rem #424242;
+    }
+    .shop-more-image {
+        width:189px;
+        height:189px;
+       
+
+    }
+    .shop-more-image img {
+     width:100%;
+     height:100%;
+    }
+    .shop-more-image-small {
+         width:41px;
+         height:12px;
+         margin:10px;
+        object-fit: cover;
+    }
+    .shop-more-image-small img {
+        width:100%;
+        height:100%;
+        
+        
+    }
+    .shop-more-text {
+        font-size: 17px;
+        font-weight: 700;
+        padding-left:5px;
+        text-transform: uppercase;
+        color:#212121;
+
+    }
+    .price-or {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color:#F57223;
+        padding-left: 5px;
+    }
+    .price-or span {
+        text-decoration: underline;
+    }
+   .price-sale {
+    color:#212121;
+   }
+   .price-sale span{
+      
+       font-size: 1rem;
+      color:#9E9E9E;
+       padding-left: 5px;
+       text-decoration: line-through;
+       
+   }
+   .rating-container {
+       display:flex;
+       justify-content: space-between;
+       align-items: center;
+       padding-bottom: 10px;
+   }
+   .rating-box {
+       display:flex;
+       gap:2px;
+       align-items: center;
+   }
+   .rating i {
+    font-size: 11px;
+    color:#F57223;
+
+   }
+   .rating-number {
+    font-size: 11px;
+    color:#9E9E9E;
+
+   }
+   .rating-nation {
+    font-size: 11px;
+    color:#9E9E9E;
+   }
+   .shop-more-content {
+    display:flex;
+    row-gap: 15px;
+    column-gap: 5px;
+    flex-wrap: wrap;
+   }
+   .seen-more {
+
+    font-size: 1.5rem;
+    display:inline-block;
+    cursor:pointer;
+    padding:10px 150px;
+    border:1px solid #1B9CB8;
+    color:#1B9CB8;
+
+
+   }
+    .seen-more-content {
+        width:100%;
+       margin:20px 0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .border {
+        width:100%;
+        height:1px;
+        background:#9E9E9E;
+      
+
+    }
+    .pay-container   {
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+    .pay-container  div{
+        width:445px;
+        height:97px;
+
+        object-fit: cover;
+
+        
+    }
+    .right .right-image div {
+        width:170px;
+        height:45px;
+
+    }
+    .right .right-image div  img {
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+    .left-box .footer-logo {
+        width:70px;
+        height:70px;
+    }
+    .left-box .footer-logo  img {
+        width:100%;
+        height:100%;
+    }
+    .footer-container {
+        display:flex;
+        gap:5rem;
+    }
+    .footer-box-1 {
+        flex: 1 1 1 25%;
+   
+    }
+    .footer-box-2{
+        flex: 1 1 1 25%;
+
+    }
+    .footer-box-3{
+        flex: 1 1 1 50%;
+      
+    }
+    .footer-1 {
+        margin-top: 4rem;
+        padding:30px;
+    }
+    .footer-box-1 h3,
+    .footer-box-2 h3,
+    .footer-box-3 h3  {
+        color:#0F136D;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .footer-box-1 ul li a,
+    .footer-box-2 ul li a,
+    .footer-box-3 ul li a {
+        color:#0F136D;
+    }
+    .left-box {
+        display:flex;
+        align-items: center;
+        gap:10px;
+
+    }
+    .footer-text p:nth-child(1) {
+        font-size: 1.5rem;
+        color:#F57223;
+
+    }
+    .footer-text p:nth-child(2) {
+        font-size: 1rem;
+        color:#0F136D;
+    }
+    .footer-box-3-top {
+        display:flex;
+         justify-content: space-between;
+        align-items: center;
+    }
+    .left {
+        flex: 1 1 50%;
+    }
+    .right{
+        flex:1 1 50%;
+    }
+    .right-image {
+        display:flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .footer-box-3-bottom {
+        margin-top:30px;
+    }
+    .footer-box-3-bottom p {
+       color:#0F136D;
+    }
+    .footer-box-3-bottom p:nth-child(1){
+        text-transform: uppercase;
+    }
+
+
+    
+    
+    
+
+</style>
+<body>
+    <div class="banner">
+        <img src="https://icms-image.slatic.net/images/ims-web/ce72daf1-739c-4718-a749-dad336fc233b.png">
+    </div>
+   <section class="menu">
+   <nav class="nav-menu">
+        <li><a href="#">Tiết kiệm hơn với ứng dụng</a></li>
+        <li><a href="#">Bán hàng cùng lazada</a></li>
+        <li><a href="#">Chăm sóc khách hàng</a></li>
+        <li><a href="#">Kiểm tra đơn hàng</a></li>
+        <li><a href="#">Đăng nhập</a></li>
+        <li><a href="#">Đăng kí</a></li>
+        <li><a href="#"">Change Language</a></li>
+   </nav>
+   </section>
+   <section class="logo">
+       <div class="lazada-logo">
+        <img src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1T7K2d8Cw3KVjSZFuXXcAOpXa.png">
+       </div>
+       <div class="logo-content">
+       <div class="search-form">
+        <input type="search" id="search" placeholder="Tìm kiếm trên Lazada">
+        <label for="search" class="bx bx-search-alt-2"></label>
+       </div>
+       <div class="cart">
+        <i class='bx bxs-cart-alt'></i>
+       </div>
+    </div>
+       <div class="sale-off">
+           <img src="https://icms-image.slatic.net/images/ims-web/84d0e573-1349-4158-be86-703ddb84d7b9.png">
+       </div>
+   </section>
+   <!--- ----------------slider--------------- -->
+   <div class="container">
+       <div class="main">
+           <img  src="/image/menu1.jpg" class="img-feature">
+           <div class="control pre"><i class='bx bx-chevron-left'></i></div>
+           <div class="control next"><i class='bx bx-chevron-right'></i></div>
+       </div>
+       <div class="list-image">
+            <div><img src="/image/menu1.jpg" alt=""></div>
+            <div class="active"><img src="/image/menu2.jpg" alt=""></div>
+            <div><img src="/image/menu3.jpg" alt=""></div>
+            <div><img src="/image/menu4.jpg" alt=""></div>
+            <div><img src="/image/menu5.jpg" alt=""></div>
+            <div><img src="/image/menu6.jpg" alt=""></div>
+            <div><img src="/image/menu1.jpg" alt=""></div>
+            <div><img src="/image/menu2.jpg" alt=""></div>
+            <div><img src="/image/menu6.jpg" alt=""></div>
+   </div>
+   <div class="laz-mall">
+        <div class="laz-mall-container">
+         <div class="icon-1">
+            <div class="icon-1-image">
+                <img src="https://laz-img-cdn.alicdn.com/images/ims-web/TB15wgLWBr0gK0jSZFnXXbRRXXa.png">
+            </div>
+            <div class="icon-1-text">
+                LazMall
+            </div>
+         </div>
+         <div class="icon-1">
+            <div class="icon-1-image">
+                <img src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1UiNthUT1gK0jSZFhXXaAtVXa.png">
+            </div>
+            <div class="icon-1-text">
+                Mã Giảm Giá
+            </div>
+         </div>
+         <div class="icon-1">
+            <div class="icon-1-image">
+                <img src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1DahvhO_1gK0jSZFqXXcpaXXa.png">
+            </div>
+            <div class="icon-1-text">
+                Nạp Thẻ & eVoucher
+            </div>
+         </div>
+         <div class="icon-1">
+            <div class="icon-1-image">
+                <img src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1CDWbBYj1gK0jSZFuXXcrHpXa.png">
+            </div>
+            <div class="icon-1-text">
+                LazGlobal
+            </div>
+         </div>
+
+        </div>
+   </div>
+   <div class="shop-1">
+    <div class="shop-1-container">
+        <h4>Deal Chớp Nhoáng</h4>
+        <div class="shop-1-content">
+            <div class="shop-1-content-top">
+                <div class="shop-1-content-left">
+                <div class="shop-1-content-top-text">Đang bán</div>
+                <div class="shop-1-content-top-watch">
+                    <div class="shop-1-content-top-watch-text">Kết thúc trong:</div>
+                    <div class="shop-1-content-top-watch-watch">
+                        <div>00</div>
+                        <div>04</div>
+                        <div>56</div>
+                    </div>
+                </div>
+                </div>
+                <div class="shop-1-content-top-text-right">
+                    mua sắm toàn bộ sản phẩm
+                </div>
+            </div>
+            <div class="shop-1-content-bottom">
+                <div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/96adf80f94b5e0590919aa5c4d618913.jpg_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/67215c47f9bece533c4b4471c14873c0.jpg_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/10ca1134de154e28413cb5f1ed2e524f.jpg_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/b73a638a0ed060df73e43f1156f5450d.png_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/77dfd80c6d4f09ed2f73f98a0f4dbd8a.jpg_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div><div class="box">
+                    <div class="image">
+                        <img src="https://lzd-img-global.slatic.net/g/p/ed5f35dd8990b01f9b47fb6c936b5ef2.jpg_400x400q80.jpg_.webp">
+                    </div>
+                    <div class="product-name">
+                        Áo cực đẹp
+                    </div>
+                    <div class="price">
+                        <p>1000 <span>đ</span></p>
+                    </div>
+                    <div class="price-sale">
+                        <p>55.000đ<span>-98%</span></p>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+    </div>
+   </div>
+   <div class="shop-2">
+         <h4>LazMall</h4>
+         <div class="box-container">
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/d4679bca2d5a64a979841c36232d1e46.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/85843141db5651c3e46c8c63072e9bb9.jpeg_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/ff/kf/Sbcecc294997f4c7388157461aee082e42.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/60a3b4d21ed9152a0f910f9ad03750b9.jpeg_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/f2a0a07450e1dd6ff2b005efba136f28.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/ff02bdbac43136895f66f7b5a5dc318a.jpeg_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/37659afd8b724a70462ae8b707463045.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/c1c137616ef974aa66b313ade0be89ce.jpeg_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/c26b4c7ad17669fbae35b4509196da7e.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/806cdad4ea7ccf229528217407993d04.jpeg_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         <div class="box">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/2910a069442227e89712101e254d2896.jpg_400x400q80.jpg_.webp">
+                <div class="image-small">
+                    <img src="https://lzd-img-global.slatic.net/g/shop/5e04cac41e462681117f4c12b2395580.png_120x120q80.jpg_.webp">
+                </div>
+            </div>
+            <div class="shop-2-text">
+                <p>Thien Huong Foods</p>
+                <p>Thien Huong Foods</p>
+            </div>
+
+         </div>
+         
+        </div>
+   </div>
+   <div class="shop-3">
+     <h4>Danh mục nghành hàng</h4>
+     <div class="shop-3-container">
+        <div class="box-3">
+           
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/836eaca77ed4ca91665762aea63d9895.jpg_170x170q80.jpg_.webp">
+            </div>
+            
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/live/my/p/5b298695725135b828959133a73f546e.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/cad4195611adf9bb210f66caf8fe31dc.png_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/bbbd69c59cc2509d411b427691b64d93.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/429a6337f32207cd392ea7ad476ee214.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/ccd33cc76e79b8177296257a3fb6b5b6.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/ff/kf/S76f14dfcc4e84fca85bc60b245b17305D.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div><div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/8fd39ddc97282a440b25ebe3b7d45b54.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div><div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/91b4cd873c4af621ed806da5476b929b.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div><div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/97dc5e693668127e907304999a4f94cc.png_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div><div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/4be244bd777d6f15fed3a582ca4b92e6.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/4d86aad9a6af1df201bec111a2b24727.png_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+       
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/f32eeaf57944d4d47a0a1b7cfd22b005.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/0d9e1145e23fa0605850ac81554b8b9a.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/7d6ca47bf7dae5b33637095ee7fabaf3.png_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/d8e1ad1c36caddffa35df4918b614b65.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/d8e1ad1c36caddffa35df4918b614b65.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="image">
+                <img src="https://lzd-img-global.slatic.net/g/p/d8e1ad1c36caddffa35df4918b614b65.jpg_170x170q80.jpg_.webp">
+            </div>
+            <div class="text">
+                Tai nghe nhét tai không dây
+            </div>
+        </div>
+     </div>
+   </div>
+   <div class="shop-more">
+    <h4>Dành riêng cho bạn</h4>
+       <div class="shop-more-content">
+           <div class="shop-more-box">
+               <div class="shop-more-image">
+                  <img src="https://lzd-img-global.slatic.net/g/p/b9d4256ee9d39043dd75035da8a04fb1.jpg_400x400q80.jpg_.webp">
+               </div>
+               <div class="shop-more-image-small">
+                 <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+               </div>
+               <div class="shop-more-text">
+                Combo Kem Body
+               </div>
+               <div class="shop-more-price">
+                <p class="price-or">
+                    380.000 <span>đ</span>
+                </p>
+                <p class="price-sale">
+                   <span>280.000đ</span> -42%
+                </p>
+               </div>
+               <div class="rating-container">
+                     <div class="rating-box">
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="rating-number">
+                            
+                            (1998)
+                        </div>
+                     </div>
+                     <div class="rating-nation">
+                         Viêt Nam
+                     </div>
+               </div>
+           </div>
+           <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/d0185761e492bb8e7f352f4a186b89a8.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/1157bc6bc0304d1aa181fa42d6f36863.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/9096c83c16cf5f377c5e2c6de4324718.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/ac5ab54867995012bb6293e4fb835e32.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/1b703ae311821dfc74ce13729f7bed30.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/e08feb8ea29a278833b580f6aca33a87.png_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/1a859c0ded32a26751b9dd33e96bb991.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/142f8821996da7fb275adab78f9f0b7b.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/85370b7ed06f5f529accf26d0fbef6a2.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/886bf4dccc1abe2241f4d22def2ab523.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/af059730fae136237df7a7fc98927478.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/b8d3ee7b4ab0084e30090d34462fe7ee.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/1d78bc66e20d523aa50548841ee747fc.png_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/a051f707b34ec5120f0a9b0ecd8cf46c.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/c376022e487cb3bbd4b1f5149b339a31.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/d7be7ca18692282e86c83d7e06c08711.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/691d4079e5f76a9873b425aeb8b4aedf.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/140ef840f77ba662a5211c269bcb0013.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/d913d1cad05fd7de84643ffaaa291ae0.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+        <div class="shop-more-box">
+            <div class="shop-more-image">
+               <img src="https://lzd-img-global.slatic.net/g/p/c95edd3bd2451b1695c6599cb2978b17.jpg_400x400q80.jpg_.webp">
+            </div>
+            <div class="shop-more-image-small">
+              <img src="https://lzd-img-global.slatic.net/g/tps/tfs/TB1r3Rqi2zO3e4jSZFxXXaP_FXa-94-28.png">
+            </div>
+            <div class="shop-more-text">
+             Combo Kem Body
+            </div>
+            <div class="shop-more-price">
+             <p class="price-or">
+                 380.000 <span>đ</span>
+             </p>
+             <p class="price-sale">
+                <span>280.000đ</span> -42%
+             </p>
+            </div>
+            <div class="rating-container">
+                  <div class="rating-box">
+                     <div class="rating">
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                         <i class='bx bxs-star'></i>
+                     </div>
+                     <div class="rating-number">
+                         
+                         (1998)
+                     </div>
+                  </div>
+                  <div class="rating-nation">
+                      Viêt Nam
+                  </div>
+            </div>
+        </div>
+
+
+       </div>
+   </div>
+   <div class="seen-more-content">
+      <div class="seen-more">
+      Xem Thêm 
+      </div>
+    </div>
+    <div class="border">
+
+    </div>
+    <div class="pay">
+        <div class="pay-container">
+            <div><img src="https://icms-image.slatic.net/images/ims-web/c9a58d95-0cf3-4dee-85ff-cc41cd2e1f39.png"></div>
+            <div><img src="https://icms-image.slatic.net/images/ims-web/e12356fe-620a-47ec-8a35-1eb5d2586c17.png"></div>
+            <div><img src="https://icms-image.slatic.net/images/ims-web/b558b2e2-01ec-4d06-a00c-dac433e04a61.png"></div>
+        </div>
+       
+    </div>
+    <div class="footer-1">
+        <div class="footer-container">
+            <div class="footer-box-1">
+                <h3>Liên hệ với Lazada</h3>
+                <ul>
+                    <li><a href="#">Hotline & Chat trực tuyến (24/7)</a></li>
+                    <li><a href="#">Trung tâm hỗ trợ</a></li>
+                    <li><a href="#">Hướng dẫn cài đặt</a></li>
+                    <li><a href="#">Giao hàng & Nhận hàng</a></li>
+                    <li><a href="#">Chính sách hàng nhập khẩu</a></li>
+                    <li><a href="#">Hướng dẫn đổi trả</a></li>
+                </ul>
+            </div>
+            <div class="footer-box-2">
+                <h3>Lazada Viêt Nam</h3>
+                <ul>
+                    <li><a href="#">Tất cả danh mục</a></li>
+                    <li><a href="#">Về Lazada Việt Nam</a></li>
+                    <li><a href="#">Bán hàng cùng lazada</a></li>
+                    <li><a href="#">Chương trình lazada Affiliate</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Điều khoảng sử dụng</a></li>
+                    <li><a href="#">chính sách bảo quản</a></li>
+                    <li><a href="#">Báo chí</a></li>
+                    <li><a href="#">Bảo vệ quyền sở hữu trí tuệ</a></li>
+                    <li><a href="#">Quy chế hoạt động sàn Lazada</a></li>
+                    <li><a href="#">Quy trình,giải quyết tranh chấp, khiếu nại</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-box-3">
+                <div class="footer-box-3-top">
+                    <div class="left">
+                        <div class="left-box">
+                        <div class="footer-logo">
+                      
+                            <img src="https://cdn.chanhtuoi.com/uploads/2020/06/logo-lazada-2.png">
+                        </div>
+                        <div class="footer-text">
+                            <p>Go where you heart beats</p>
+                            <p>Tải áp Lazada</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="right">
+                        <div class="right-image">
+                            <div><img src="https://e7.pngegg.com/pngimages/936/548/png-clipart-app-store-logo-app-store-apple-google-play-apple-text-label.png"></div>
+                            <div><img src="https://leangostudio.com/wp-content/uploads/2020/08/png-transparent-google-play-logo-google-play-computer-icons-app-store-google-text-logo-sign.png"></div>
+                            <div><img src="https://www.citypng.com/public/uploads/small/11596476579hltkpmpoc7k10tffxhskorauzl4twojgatyuivfvwtvyoa8vvznzzxktlsg8n32q0f6jz9pjwhny0eq3ewoaj6gijolon14oqozd.png"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-box-3-bottom">
+                     <p>Công ty TNHH recess</p>
+                     <p>Giấy CNĐKDN: 0308808576 - Ngày cấp: 06/5/2009, được sửa đổi lần thứ 19 ngày 15/8/2019.</p>
+                       <p> Cơ quan cấp: Phòng Đăng ký kinh doanh - Sở kế hoạch và Đầu tư TP.HCM</p>
+                       <p> Địa chỉ đăng ký kinh doanh: Tầng 19, Tòa nhà Saigon Centre -  Tháp 2, 67 Lê Lợi, Phường Bến Nghé, Quận 1, Tp. Hồ Chí Minh, Việt Nam.</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+   
+   
+   <script src="webjava.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+let btn = document.querySelector("label");
+let body = document.querySelector("body");
+// console.log(body)
+
+
+function init() {
+    let mode = localStorage.getItem("mode");
+    body.setAttribute("class",mode)
+}
+init();
+
+btn.addEventListener("click", ()=>{
+    body.classList.toggle("dark")
+    let mode = body.getAttribute("class");
+    // console.log(mode);
+    localStorage.setItem("mode",mode);
+    
+}
+)
+// <!-- <div class="switch-wp">
+// <input type="checkbox" id="switch" hidden>
+// <label for="switch"></label>
+// </div>
+// <style>
+// .switch-wp{
+//    width:100px;
+//    background:green;
+//    border-radius: 20px;
+
+// }
+// .switch-wp label {
+//    width:20px;
+//    height:20px;
+//    background:white;
+//    border-radius: 50%;
+//    display:block;
+//    transition:0.5s;
+//    position:relative;
+// }
+// .switch-wp input:checked + label {
+//    margin-left:80px;
+// }
+
+// </style> -->

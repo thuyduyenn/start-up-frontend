@@ -1,0 +1,39 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box-container">
+            <div class="header">
+                <button type="all" class="active">All</button>
+                <button type="salad">Salad</button>
+                <button type="meat">Meat</button>
+                <button type="drink">Drink</button>
+                <button type="desert">Desert</button>
+            </div>
+            <div class="food-container">
+                <div><img src="./image/menu1.jpg" type="desert" alt=""></div>
+                <div><img src="./image/menu2.jpg" type="drink" alt=""></div>
+                <div><img src="./image/menu3.jpg" type="drink" alt=""></div>
+                <div><img src="./image/menu4.jpg" type="drink" alt=""></div>
+                <div><img src="./image/menu5.jpg" type="meat" alt=""></div>
+                <div><img src="./image/menu6.jpg" type="meat" alt=""></div>
+                <div><img src="./image/menu.jpg" type="salad" alt=""></div>
+                <div>  <img src="./image/img1.jpg" type="salad" alt=""></div>
+                <div><img src="./image/menu.jpg" type="salad" alt=""></div>
+                <div>  <img src="./image/img1.jpg" type="salad" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <script src="webjava.js"></script>
+</body>
+</html>

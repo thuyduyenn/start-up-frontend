@@ -1,0 +1,128 @@
+let search = document.querySelector('#search')
+let searchForm = document.querySelector('.search-login')
+search.onclick = () => {
+    searchForm.classList.toggle('active')
+    cartForm.classList.remove('active')
+    loginForm.classList.remove('active')
+    menuForm.classList.remove('active')
+}
+let cart = document.querySelector('#cart')
+let cartForm = document.querySelector('.cart')
+cart.onclick = () => {
+    searchForm.classList.remove('active')
+    cartForm.classList.toggle('active')
+    loginForm.classList.remove('active')
+    menuForm.classList.remove('active')
+}
+let user = document.querySelector('#user')
+let loginForm = document.querySelector('.login-form')
+user.onclick = () => {
+    searchForm.classList.remove('active')
+    cartForm.classList.remove('active')
+    loginForm.classList.toggle('active')
+    menuForm.classList.remove('active')
+}
+let menu = document.querySelector('#menu')
+let menuForm = document.querySelector('.nav-menu')
+menu.onclick = () => {
+    menuForm.classList.toggle('active')
+    cartForm.classList.remove('active')
+    loginForm.classList.remove('active')
+    searchForm.classList.remove('active')
+}
+window.addEventListener('scroll',function(){
+    const header = document.querySelector('header')
+    
+    header.classList.toggle("sticky",window.scrollY > 0 )
+})
+let input = document.querySelector('.input')
+let addIcon = document.querySelector('.add-icon')
+input.onclick = () => {
+    addIcon.classList.toggle('active')
+} 
+//let like = document.querySelector('.bx-like')
+//like.onclick = () => {
+    //like.classList.toggle('active')
+//}
+//let like = document.querySelectorAll('.bx-like')
+//like.addEventListener("click",function(){
+    //like.classList.toggle('active')
+//})
+
+
+
+//cart 
+const btn = document.querySelectorAll(".btn-2")
+   //console.log(btn)
+   btn.forEach(function(button,index){
+           //console.log(button,index)
+           button.addEventListener("click",function(event){
+                var btnItem = event.target
+                var product = btnItem.parentElement.parentElement.parentElement
+                //console.log(product)
+                
+                var productImg = product.querySelector(".food-image img").src
+                //console.log(productImg)
+                var productName = product.querySelector(".food-content h3").innerText
+                //console.log(productName)
+                var productPrice = product.querySelector(".food-content .amout span").innerText
+                //console.log(productPrice)
+                //console.log(productImg,productName,productPrice)
+                addCart(productImg,productName,productPrice)
+           })
+   })
+
+/*  addCart starts here */   
+    function  addCart(productImg,productName,productPrice){
+           var addtr = document.createElement('tr')
+           var cartItem = document.querySelectorAll('tbody tr')
+           var trContent = '<tr><td style="display:flex;align-items: center;"><img style="width:90px;height:70px;" src="'+productImg+'" ><span class="title">'+productName+'</span></td><td><p><span class="total">'+productPrice+'</span><sup>đ</sup></p></td><td><input type="number" style="width:30px; outline:none;" value="1" min="1"></td><td style="cursor:pointer;" class="cart-delete">xoá</td></tr>'
+           addtr.innerHTML = trContent
+           var cartTable = document.querySelector('tbody')
+           //console.log(cartTable)
+           cartTable.append(addtr)
+           cartTotal()
+           deleteCart()
+
+    }
+//tính tổng tiền hàng
+function cartTotal(){
+    var cartItem = document.querySelectorAll('tbody tr')
+    var totalC = 0 
+    for (var i = 0; i<cartItem.length;i++){
+        var inputValue = cartItem[i].querySelector("input").value
+        var productPrice = cartItem[i].querySelector(".total").innerHTML
+        var totalA = inputValue*productPrice*1000
+        totalC = totalA + totalC
+
+    }
+    var cartTotal = document.querySelector(".price-total span")
+          cartTotal.innerHTML =totalC.toLocaleString('de-DE')
+    inputChange()      
+}
+function deleteCart(){
+     var cartItem = document.querySelectorAll("tbody tr")
+     for (var i=0;i<cartItem.length;i++){
+        var productT = document.querySelectorAll(".cart-delete")
+        //console.log(productT)
+        productT[i].addEventListener("click",function(event){
+                 var cartDelete = event.target
+                 var cartItemR = cartDelete.parentElement
+
+                 //console.log(cartItemR)
+                 cartItemR.remove()
+                 cartTotal()
+                 
+        })
+        
+     }
+}
+function inputChange(){
+        var cartItem = document.querySelectorAll("tbody tr")
+        for(i=0;i<cartItem.length;i++){
+            var inputValue = cartItem[i].querySelector("input")
+            inputValue.addEventListener("change",function(){
+                 cartTotal()
+            })
+        }
+}

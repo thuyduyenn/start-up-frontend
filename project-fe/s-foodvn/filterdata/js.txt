@@ -1,0 +1,123 @@
+// let btnList = document.querySelectorAll("button");
+// let imgList = document.querySelectorAll("img");
+
+//  btnList.forEach(btn => {
+//     btn.addEventListener("click", e=> {
+//          let type = e.currentTarget.getAttribute('data');
+//          imgList.forEach(img => {
+//             let foodType = img.getAttribute("type");
+//             if (type == "all" || foodType === type){
+//                 img.classList.remove("hide");
+//             }else {
+//                 img.classList.add("hide");
+//             }
+//          })
+
+//     })
+//  })
+//--- cách 2 -----//
+// var container = document.querySelector(".container");
+// var imgList = document.querySelectorAll("img");
+// var btnList = document.querySelectorAll("button")
+// var arr = [];
+// imgList.forEach(item=> {
+//     arr.push({
+//         src: item.src,
+//         type: item.getAttribute('type')
+//     })
+// })
+// btnList.forEach(item=> {
+//     item.addEventListener("click", e => {
+//         let type = e.currentTarget.getAttribute("data");
+//         let filterData = arr.filter(food=> {
+//              return food.type === type
+//         })
+//         render(filterData);
+//     })
+// })
+
+// function render(list){
+//     container.innerHTML = "";
+//     list.forEach(item=> {
+//         let imgElement = document.createElement("img");
+//         imgElement.src = item.src;
+//         imgElement.setAttribute("type",item.type);
+//         container.append(imgElement);
+//     })
+// }
+//have css
+// let btnList = document.querySelectorAll("button");
+// let imgList = document.querySelectorAll("img");
+
+// 
+// function addActive(add){
+//      btnList.forEach(addActive => {
+//         addActive.classList.remove("active")
+//   })
+//      add.classList.add("active")
+// }
+// btnList.forEach(btn=> {
+  
+//     btn.addEventListener("click", e=> {
+//         addActive(e.currentTarget);
+
+//         let type = e.currentTarget.getAttribute("type");
+//          imgList.forEach(item=> {
+//             let foodItem = item.getAttribute("type");
+//             if ( type=="all" || foodItem === type){
+//                    item.parentElement.classList.remove("hide")
+//             }else {
+//                    item.parentElement.classList.add("hide");
+//             }
+//          })
+//     })
+// })
+// ends
+//--------------cách 2----------------
+let foodContainer = document.querySelector(".food-container");
+let btnList = document.querySelectorAll("button");
+let imgList = document.querySelectorAll("img");
+var arr = [];
+
+imgList.forEach(item => {
+    arr.push({
+         src: item.src,
+         type: item.getAttribute("type")
+    })
+})
+function addActive(add) {
+        btnList.forEach(btn=> {
+            btn.classList.remove("active");
+        })
+        add.classList.add("active")
+}
+
+btnList.forEach(btn=> {
+    btn.addEventListener("click", e=> {
+        addActive(e.currentTarget);
+        let type = e.currentTarget.getAttribute("type");
+         if ( type== "all"){
+             render(arr);
+             return;
+        }
+         let filterData = arr.filter(food => {
+           return food.type === type;
+         })
+         render(filterData)
+
+    })
+
+ 
+    
+})
+function render(list) {
+      foodContainer.innerHTML ="";
+      list.forEach(item => {
+      div  = document.createElement("div");
+      img = document.createElement("img");
+      img.src = item.src;
+      img.type = item.type;
+      div.append(img);
+      foodContainer.append(div);
+      })
+}
